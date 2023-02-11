@@ -8,7 +8,6 @@ import { SettingsMenuSelectors } from '@tests/selectors/settings.selectors';
 
 import { RouteUrls } from '@shared/route-urls';
 
-import { useCreateAccount } from '@app/common/hooks/account/use-create-account';
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useDrawers } from '@app/common/hooks/use-drawers';
 import { useModifierKey } from '@app/common/hooks/use-modifier-key';
@@ -32,7 +31,6 @@ import { MenuWrapper } from './components/settings-menu-wrapper';
 export function SettingsDropdown() {
   const ref = useRef<HTMLDivElement | null>(null);
   const { lockWallet, hasGeneratedWallet, wallet } = useWallet();
-  const createAccount = useCreateAccount();
   const [hasCreatedAccount, setHasCreatedAccount] = useHasCreatedAccount();
   const { setIsShowingSettings, isShowingSettings, setIsShowingSwitchAccountsState } = useDrawers();
   const currentNetworkId = useCurrentNetworkId();
@@ -76,15 +74,6 @@ export function SettingsDropdown() {
             )}
             {hasGeneratedWallet && walletType === 'software' && (
               <>
-                <MenuItem
-                  data-testid={SettingsSelectors.CreateAccountBtn}
-                  onClick={wrappedCloseCallback(() => {
-                    void createAccount();
-                    setHasCreatedAccount(true);
-                  })}
-                >
-                  Create an account
-                </MenuItem>
                 <MenuItem
                   data-testid={SettingsSelectors.ViewSecretKeyListItem}
                   onClick={wrappedCloseCallback(() => {
