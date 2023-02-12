@@ -20,5 +20,5 @@ export function Balance(props: BalanceProps) {
     [balances]
   );
 
-  return <Caption style={{ fontSize: '10px' }}>{balance}</Caption>;
+  return <Caption variant="c3">{balance}</Caption>;
 }
