@@ -8,6 +8,7 @@ import { CurrentAccountAvatar } from '@app/features/current-account/current-acco
 import { CurrentAccountName } from '@app/features/current-account/current-account-name';
 import { CurrentStxAddress } from '@app/features/current-account/current-stx-address';
 import { useCurrentAccount } from '@app/store/accounts/account.hooks';
+import { NetworkModeBadge } from '@app/components/network-mode-badge';
 
 interface PopupHeaderLayoutProps {
   children: React.ReactNode;
@@ -19,9 +20,12 @@ function PopupHeaderLayout({ children }: PopupHeaderLayoutProps) {
         <Stack isInline alignItems="center">
           <CurrentAccountAvatar size="24px" fontSize="10px" />
           <CurrentAccountName as="h3" />
-          <CurrentStxAddress />
+          <CurrentStxAddress fontSize="12px" />
         </Stack>
-        {children}
+        <Stack isInline alignItems="center" justifyContent="right">
+          <NetworkModeBadge />
+          {children}
+        </Stack>
       </Stack>
     </Box>
   );

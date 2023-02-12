@@ -20,5 +20,5 @@ export function Balance(props: BalanceProps) {
     [balances]
   );
 
-  return <Caption>{balance}</Caption>;
+  return <Caption style={{ fontSize: '10px' }}>{balance}</Caption>;
 }
